@@ -5,7 +5,8 @@
  */
 package sistema;
 
-import sistema.pantallas.Inicio;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -13,12 +14,48 @@ import sistema.pantallas.Inicio;
  */
 public class Sistema {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Inicio in = new Inicio();
-        in.setVisible(true);
+    private ArrayList<Cliente> cliente;
+    private ArrayList<Director> director;
+    private ArrayList<Promotor> promotor;
+    
+    public Sistema(){
+        init();
     }
+    
+    public void init(){
+        promotor = new ArrayList<>();
+            
+        promotor.add(new Promotor("Juan",1,"yolo",this) );
+        promotor.add(new Promotor("Pepe",1,"esa",this) );
+        promotor.add(new Promotor("Jose",1,"ese",this) );
+        promotor.add(new Promotor("Jocho",1,"ere",this) );
+        
+        
+    }
+
+    public ArrayList<Cliente> getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ArrayList<Cliente> cliente) {
+        this.cliente = cliente;
+    }
+
+    public ArrayList<Director> getDirector() {
+        return director;
+    }
+
+    public void setDirector(ArrayList<Director> director) {
+        this.director = director;
+    }
+
+    public ArrayList<Promotor> getPromotor() {
+        return promotor;
+    }
+
+    public void setPromotor(ArrayList<Promotor> promotor) {
+        this.promotor = promotor;
+    }
+    
     
 }

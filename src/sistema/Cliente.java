@@ -10,10 +10,12 @@ package sistema;
  * @author ALBER
  */
 public class Cliente extends Persona {
+    private Sistema sistem;
     
-    public Cliente(String nombre, int id) {
-        super(nombre, id);
-        
+    
+    public Cliente(String nombre, int id, String contra, Sistema sistem) {
+        super(nombre, id, contra);
+        this.sistem = sistem;
     }
     
     

@@ -10,9 +10,12 @@ package sistema;
  * @author ALBER
  */
 public class Promotor extends Persona {
+    private Sistema sistem;
+
     
-    public Promotor(String nombre, int id) {
-        super(nombre, id);
+    public Promotor(String nombre, int id, String contra,Sistema sistem) {
+        super(nombre, id, contra);
+        this.sistem = sistem;
     }
     
 }

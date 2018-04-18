@@ -10,9 +10,12 @@ package sistema;
  * @author ALBER
  */
 public class Director extends Persona {
+    private Sistema sistem;
+
     
-    public Director(String nombre, int id) {
-        super(nombre, id);
+    public Director(String nombre, int id,String contra,Sistema sistem) {
+        super(nombre, id, contra);
+        this.sistem = sistem;
     }
     
 }
