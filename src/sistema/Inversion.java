@@ -5,7 +5,9 @@
  */
 package sistema;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 
 
@@ -20,8 +22,8 @@ public class Inversion {
     private int plazo;
     private int taza;
     private int diasTranscurridos;
-    private Date diaInicio;
-    private Date diaTermino;
+    private Calendar diaInicio;
+    private Calendar diaTermino;
     
     public Inversion(int id, int plazo, int taza, Sistema sistem ){
         this.id = id;
@@ -29,6 +31,8 @@ public class Inversion {
         this.taza = taza;
         this.sistem = sistem;
         diasTranscurridos = 0;
+        diaInicio = new GregorianCalendar();
+        diaInicio = sistem.getDiaActual();        
     }
     
     

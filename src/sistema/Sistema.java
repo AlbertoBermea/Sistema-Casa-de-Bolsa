@@ -6,7 +6,9 @@
 package sistema;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 
 /**
@@ -14,10 +16,11 @@ import java.util.Iterator;
  * @author ALBER
  */
 public class Sistema {
-    private Date diaActual;
     private ArrayList<Cliente> cliente;
     private Director director;
     private ArrayList<Promotor> promotor;
+    private Calendar diaActual;
+    private ArrayList<Inversion> inversion;
     
     public Sistema(){
         init();
@@ -29,6 +32,12 @@ public class Sistema {
         director = new Director("",0,"",this);
         
         Files.loadFile(this);
+        
+        diaActual = new GregorianCalendar(2018,11,18);
+        System.out.println(diaActual.get(diaActual.YEAR) );
+        System.out.println(diaActual.get(diaActual.MONTH) );
+        System.out.println(diaActual.get(diaActual.DAY_OF_YEAR) );
+        
         /*
         promotor = new ArrayList<>();
             
@@ -73,5 +82,13 @@ public class Sistema {
     
     public void GuardarDatos(){
         Files.saveFile(this);
+    }
+
+    public Calendar getDiaActual() {
+        return diaActual;
+    }
+
+    public void setDiaActual(Calendar diaActual) {
+        this.diaActual = diaActual;
     }
 }
