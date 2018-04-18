@@ -15,15 +15,20 @@ import java.util.Date;
  */
 public class Inversion {
     private Sistema sistem;
+    private double ValorNominal;
     private int id;
     private int plazo;
     private int taza;
+    private int diasTranscurridos;
+    private Date diaInicio;
+    private Date diaTermino;
     
     public Inversion(int id, int plazo, int taza, Sistema sistem ){
         this.id = id;
         this.plazo = plazo;
         this.taza = taza;
         this.sistem = sistem;
+        diasTranscurridos = 0;
     }
     
     

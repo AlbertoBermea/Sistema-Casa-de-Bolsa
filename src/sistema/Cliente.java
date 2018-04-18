@@ -11,6 +11,7 @@ package sistema;
  */
 public class Cliente extends Persona {
     private Sistema sistem;
+    private Double Dinero;
     
     
     public Cliente(String nombre, int id, String contra, Sistema sistem) {

@@ -1,0 +1,10 @@
+DonChingon,yolo,1
+3
+Juan,yolo,1
+Pepe,esa,2
+Jose,ese,3
+4
+Jocho,yolo,1
+pito,efe,2
+puta,ers,3
+simon,trece,4

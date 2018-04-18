@@ -7,6 +7,7 @@ package sistema.pantallas;
 
 import java.util.Iterator;
 import javax.swing.JOptionPane;
+import sistema.Cliente;
 import sistema.Promotor;
 import sistema.Sistema;
 
@@ -111,17 +112,35 @@ public class Inicio extends javax.swing.JFrame {
         String usuario = new String( jTextField1.getText());
         String pass = new String( jPasswordField1.getPassword());
         System.out.println(usuario + "  " + pass);
-        
+                
         Iterator itr = sistem.getPromotor().iterator();
         while(itr.hasNext()){
             Promotor promo = (Promotor) itr.next();
-            System.out.println(promo.getNombre() + "    " + promo.getContra() );
+            //System.out.println(promo.getNombre() + "    " + promo.getContra() );
             if(usuario.equals(promo.getNombre()) && pass.equals(promo.getContra()) ){
-                MainPromotor MP = new MainPromotor();
+                MainPromotor MP = new MainPromotor(sistem);
                 MP.setVisible(true);
                 dispose();
                 entrar = true;
             }
+        }
+        
+        itr = sistem.getCliente().iterator();
+        while(itr.hasNext()){
+            Cliente clien = (Cliente) itr.next();
+            if(usuario.equals(clien.getNombre()) && pass.equals(clien.getContra()) ){
+                MainCliente MC = new MainCliente(sistem);
+                MC.setVisible(true);
+                dispose();
+                entrar = true;
+            }
+        }
+        
+        if(usuario.equals(sistem.getDirector().getNombre()) && pass.equals(sistem.getDirector().getContra()) ){
+            MainDirector MD = new MainDirector(sistem);
+            MD.setVisible(true);
+            dispose();
+            entrar = true;
         }
         
         if( !entrar ){
