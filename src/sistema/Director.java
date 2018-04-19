@@ -11,7 +11,6 @@ package sistema;
  */
 public class Director extends Persona {
     private Sistema sistem;
-
     
     public Director(String nombre, int id,String contra,Sistema sistem) {
         super(nombre, id, contra);

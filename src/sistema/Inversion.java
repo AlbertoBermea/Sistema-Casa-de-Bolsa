@@ -17,23 +17,108 @@ import java.util.GregorianCalendar;
  */
 public class Inversion {
     private Sistema sistem;
-    private double ValorNominal;
+    private double valorNominal;
     private int id;
     private int plazo;
-    private int taza;
     private int diasTranscurridos;
-    private Calendar diaInicio;
-    private Calendar diaTermino;
+    private int yearInicio;
+    private int diaInicio;
+    private int yearTermino;
+    private int diaTermino;
+    private boolean reinversion; 
     
-    public Inversion(int id, int plazo, int taza, Sistema sistem ){
+    public Inversion(double valorNominal,int id, int plazo, int yearInicio,int diaInicio,int yearTermino,int diaTermino, int diasTranscurridos, boolean reinversion,Sistema sistem){
+        this.valorNominal = valorNominal;
         this.id = id;
         this.plazo = plazo;
-        this.taza = taza;
         this.sistem = sistem;
-        diasTranscurridos = 0;
-        diaInicio = new GregorianCalendar();
-        diaInicio = sistem.getDiaActual();        
+        this.diasTranscurridos = diasTranscurridos;
+        this.yearInicio = yearInicio;
+        this. diaInicio = diaInicio;
+        this.yearTermino = yearTermino;
+        this.diaTermino = diaTermino;
+        this.reinversion = reinversion;
     }
-    
+
+    public Sistema getSistem() {
+        return sistem;
+    }
+
+    public void setSistem(Sistema sistem) {
+        this.sistem = sistem;
+    }
+
+    public double getValorNominal() {
+        return valorNominal;
+    }
+
+    public void setValorNominal(double valorNominal) {
+        this.valorNominal = valorNominal;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getPlazo() {
+        return plazo;
+    }
+
+    public void setPlazo(int plazo) {
+        this.plazo = plazo;
+    }
+
+    public int getDiasTranscurridos() {
+        return diasTranscurridos;
+    }
+
+    public void setDiasTranscurridos(int diasTranscurridos) {
+        this.diasTranscurridos = diasTranscurridos;
+    }
+
+    public int getYearInicio() {
+        return yearInicio;
+    }
+
+    public void setYearInicio(int yearInicio) {
+        this.yearInicio = yearInicio;
+    }
+
+    public int getDiaInicio() {
+        return diaInicio;
+    }
+
+    public void setDiaInicio(int diaInicio) {
+        this.diaInicio = diaInicio;
+    }
+
+    public int getYearTermino() {
+        return yearTermino;
+    }
+
+    public void setYearTermino(int yearTermino) {
+        this.yearTermino = yearTermino;
+    }
+
+    public int getDiaTermino() {
+        return diaTermino;
+    }
+
+    public void setDiaTermino(int diaTermino) {
+        this.diaTermino = diaTermino;
+    }
+
+
+    public boolean isReinversion() {
+        return reinversion;
+    }
+
+    public void setReinversion(boolean reinversion) {
+        this.reinversion = reinversion;
+    }
     
 }

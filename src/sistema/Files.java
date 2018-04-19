@@ -37,6 +37,14 @@ public class Files {
                 printWriter.println("" + clien.getNombre() + "," + clien.getContra() + "," + clien.getId() + "");
             }
             
+            //datos inversiones
+            printWriter.println("" + sistem.getCetes().size() );
+            for(Cete cet : sistem.getCetes()){
+                printWriter.println("" + cet.getId() + "," + cet.getPlazo() + "," + cet.getValorNominal() + "," + cet.getTasaFija() + "," + cet.getDiaInicio() + "," + cet.getYearInicio() +"," + cet.getDiaTermino()+"," + cet.getYearTermino() + "," + cet.getDiasTranscurridos() + "," + cet.isReinversion() + "");
+            }
+            
+            
+            
             printWriter.close();
         } catch (IOException ioe){
             System.out.println("Se te lleno el pedo" + ioe.toString());
@@ -94,6 +102,36 @@ public class Files {
                 Cliente clien = new Cliente(nom,id,contra,sistem);
                 sistem.getCliente().add(clien);
             }
+            
+            //enemigos
+            int cetes = Integer.parseInt(bufferedReader.readLine());
+            sistem.getCetes().clear();
+            //adding enemies
+            for (int i = 0; i < cetes
+                    ; i++){
+                //getting the next line
+                line = bufferedReader.readLine();
+                //getting every token from the line
+                tokens = line.split(",");
+                //Defining score and lives
+                String nom = tokens[0];
+                String contra = tokens[1];
+                int id = Integer.parseInt(tokens[0]);
+                int plazo = Integer.parseInt(tokens[1]);
+                double valor = Double.parseDouble(tokens[2]) ;
+                double tasa = Double.parseDouble(tokens[3]);
+                int diaInicio = Integer.parseInt(tokens[4]);
+                int yearInicio = Integer.parseInt(tokens[5]);
+                int diaTermino = Integer.parseInt(tokens[6]);
+                int yearTermino = Integer.parseInt(tokens[7]);
+                int diasTranscurridos = Integer.parseInt(tokens[8]);
+                boolean reinversion = Boolean.parseBoolean(tokens[9]);
+                      
+                Cete cet = new Cete(valor, id, plazo, yearInicio, diaInicio, yearTermino, diaTermino, diasTranscurridos, reinversion,tasa,sistem);
+                sistem.getCetes().add(cet);
+            }
+            
+            
             
         } catch (IOException ioe) {
             System.out.println("Juego no ha sido guardado " + ioe.toString());

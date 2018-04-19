@@ -5,6 +5,8 @@
  */
 package sistema;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ALBER
@@ -12,14 +14,11 @@ package sistema;
 public class Cliente extends Persona {
     private Sistema sistem;
     private Double Dinero;
-    
+    private ArrayList<Integer> idInversiones;
     
     public Cliente(String nombre, int id, String contra, Sistema sistem) {
         super(nombre, id, contra);
         this.sistem = sistem;
     }
-    
-    
-    
     
 }

@@ -7,8 +7,6 @@ package sistema;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Iterator;
 
 /**
@@ -19,8 +17,10 @@ public class Sistema {
     private ArrayList<Cliente> cliente;
     private Director director;
     private ArrayList<Promotor> promotor;
-    private Calendar diaActual;
-    private ArrayList<Inversion> inversion;
+    private int diaActual;
+    private int yearActual;
+    private ArrayList<Cete> cetes;
+    private ArrayList<BondeD> bondes;
     
     public Sistema(){
         init();
@@ -29,14 +29,27 @@ public class Sistema {
     public void init(){
         promotor = new ArrayList<>();
         cliente = new ArrayList<>();
+        cetes = new ArrayList<>();
+        bondes = new ArrayList<>();     
         director = new Director("",0,"",this);
+        
+        yearActual = 2018;
+        diaActual = 100;
         
         Files.loadFile(this);
         
-        diaActual = new GregorianCalendar(2018,11,18);
-        System.out.println(diaActual.get(diaActual.YEAR) );
-        System.out.println(diaActual.get(diaActual.MONTH) );
-        System.out.println(diaActual.get(diaActual.DAY_OF_YEAR) );
+        
+        cetes.add( new Cete(1200, 1, 28,yearActual,diaActual, 0, 0 , 0, false, 1.03 ,this ) );
+        cetes.add( new Cete(1400, 2, 28,yearActual, diaActual,0,0, 0, false, 1.02,this ) );
+
+        
+        
+        Iterator itr = cetes.iterator();
+        while(itr.hasNext()){
+            Cete cet = (Cete) itr.next();
+            
+            //System.out.println(cet.getTasaFija());
+        }
         
         /*
         promotor = new ArrayList<>();
@@ -84,11 +97,28 @@ public class Sistema {
         Files.saveFile(this);
     }
 
-    public Calendar getDiaActual() {
+    public int getDiaActual() {
         return diaActual;
     }
 
-    public void setDiaActual(Calendar diaActual) {
+    public void setDiaActual(int diaActual) {
         this.diaActual = diaActual;
     }
+
+    public int getYearActual() {
+        return yearActual;
+    }
+
+    public void setYearActual(int yearActual) {
+        this.yearActual = yearActual;
+    }
+
+    public ArrayList<Cete> getCetes() {
+        return cetes;
+    }
+
+    public void setCetes(ArrayList<Cete> cetes) {
+        this.cetes = cetes;
+    }
+    
 }
