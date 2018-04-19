@@ -118,7 +118,7 @@ public class Inicio extends javax.swing.JFrame {
             Promotor promo = (Promotor) itr.next();
             //System.out.println(promo.getNombre() + "    " + promo.getContra() );
             if(usuario.equals(promo.getNombre()) && pass.equals(promo.getContra()) ){
-                MainPromotor MP = new MainPromotor(sistem);
+                MainPromotor MP = new MainPromotor(sistem , promo.getId() );
                 MP.setVisible(true);
                 dispose();
                 entrar = true;

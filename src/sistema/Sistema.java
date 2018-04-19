@@ -33,15 +33,9 @@ public class Sistema {
         bondes = new ArrayList<>();     
         director = new Director("",0,"",this);
         
-        yearActual = 2018;
-        diaActual = 100;
+       
         
         Files.loadFile(this);
-        
-        
-        cetes.add( new Cete(1200, 1, 28,yearActual,diaActual, 0, 0 , 0, false, 1.03 ,this ) );
-        cetes.add( new Cete(1400, 2, 28,yearActual, diaActual,0,0, 0, false, 1.02,this ) );
-
         
         
         Iterator itr = cetes.iterator();
@@ -52,6 +46,13 @@ public class Sistema {
         }
         
         /*
+        bondes.add( new BondeD(2,1,200, 1, 28,yearActual,diaActual, 0, 0 , 0, false, 1.003 ,this ) );
+        cetes.add( new Cete(1,1,1200, 1, 28,yearActual,diaActual, 0, 0 , 0, false, 1.03 ,this ) );
+        cetes.add( new Cete(2,2,1400, 2, 28,yearActual, diaActual,0,0, 0, false, 1.02,this ) );
+        yearActual = 2018;
+        diaActual = 100;
+        
+        
         promotor = new ArrayList<>();
             
         promotor.add(new Promotor("Juan",1,"yolo",this) );
@@ -120,5 +121,14 @@ public class Sistema {
     public void setCetes(ArrayList<Cete> cetes) {
         this.cetes = cetes;
     }
+
+    public ArrayList<BondeD> getBondes() {
+        return bondes;
+    }
+
+    public void setBondes(ArrayList<BondeD> bondes) {
+        this.bondes = bondes;
+    }
+    
     
 }

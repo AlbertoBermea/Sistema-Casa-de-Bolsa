@@ -120,7 +120,7 @@ public class CreacionCliente extends javax.swing.JFrame {
         }
         else{
             sistem.getCliente().add( new Cliente(nombre,sistem.getCliente().get( sistem.getCliente().size() - 1 ).getId() + 1,pass,sistem ) );
-            MainPromotor MP = new MainPromotor(sistem);
+            MainPromotor MP = new MainPromotor(sistem, /**************************************/1);
             MP.setVisible(true);
             dispose();
         }

@@ -26,8 +26,12 @@ public class Inversion {
     private int yearTermino;
     private int diaTermino;
     private boolean reinversion; 
+    private int idCliente;
+    private int idPromotor;
     
-    public Inversion(double valorNominal,int id, int plazo, int yearInicio,int diaInicio,int yearTermino,int diaTermino, int diasTranscurridos, boolean reinversion,Sistema sistem){
+    public Inversion(int idCliente,int idPromotor,double valorNominal,int id, int plazo, int yearInicio,int diaInicio,int yearTermino,int diaTermino, int diasTranscurridos, boolean reinversion,Sistema sistem){
+        this.idCliente = idCliente;
+        this.idPromotor = idPromotor;
         this.valorNominal = valorNominal;
         this.id = id;
         this.plazo = plazo;
@@ -120,5 +124,22 @@ public class Inversion {
     public void setReinversion(boolean reinversion) {
         this.reinversion = reinversion;
     }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public int getIdPromotor() {
+        return idPromotor;
+    }
+
+    public void setIdPromotor(int idPromotor) {
+        this.idPromotor = idPromotor;
+    }
+    
     
 }
