@@ -45,12 +45,13 @@ public class CrearBonde extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +95,15 @@ public class CrearBonde extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox1.setText("Sin reinversion al finalizar");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox2.setText("Con reinversion al finalizar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,31 +113,36 @@ public class CrearBonde extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField4)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                                .addComponent(jButton5))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton1)
-                                .addGap(51, 51, 51)))
-                        .addGap(26, 26, 26))
+                                .addGap(73, 73, 73))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField2)
+                                            .addComponent(jTextField1)
+                                            .addComponent(jTextField3)
+                                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(69, 69, 69)
+                                        .addComponent(jButton5))
+                                    .addComponent(jCheckBox2))
+                                .addContainerGap(92, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jCheckBox1)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(60, 60, 60)
                         .addComponent(jButton2))))
         );
         layout.setVerticalGroup(
@@ -135,10 +150,12 @@ public class CrearBonde extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)))
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -155,13 +172,18 @@ public class CrearBonde extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBox1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox2)))
+                .addGap(32, 32, 32)
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(73, 73, 73))
         );
 
         pack();
@@ -185,40 +207,55 @@ public class CrearBonde extends javax.swing.JFrame {
         String sidc = new String( jTextField2.getText());
         String sp = new String( jTextField3.getText());
         String st = new String( jTextField4.getText());
-        String sr = new String( jTextField5.getText());
+        
+        int plazo = Integer.parseInt(sp);
+        
+        if( plazo % 28 == 0 ){
+            if((jCheckBox1.isSelected() && jCheckBox2.isSelected()) ||(!jCheckBox1.isSelected() && !jCheckBox2.isSelected())  ){
+                JOptionPane.showMessageDialog(this, "Selecccionar un campo de reinversion");
+            }
 
-        if(sv.equals("") || sidc.equals("") || sp.equals("") || st.equals("") || sr.equals("") ){
-            JOptionPane.showMessageDialog(this, "Faltan campos por llenar");
+            if(sv.equals("") || sidc.equals("") || sp.equals("") || st.equals("") ){
+                JOptionPane.showMessageDialog(this, "Faltan campos por llenar");
+            }
+            else{
+                int idc = Integer.parseInt(sidc);
+
+                Iterator itr = sistem.getCliente().iterator();
+                while(itr.hasNext()){
+                    Cliente clien = (Cliente) itr.next();
+                    if( clien.getId() == idc  ){
+                        Double valor = Double.parseDouble( sv);
+
+                        Double tasa = Double.parseDouble( st);
+                        Boolean reinversion = false;
+
+                        if(jCheckBox1.isSelected()){
+                            reinversion = false; 
+                        }
+                        if(jCheckBox2.isSelected()){
+                            reinversion = true; 
+                        } 
+
+                        sistem.CrearBonde(valor,idc,plazo,tasa,reinversion,id);
+                        sistem.GuardarDatos();
+
+                        MainPromotor MP = new MainPromotor(sistem, id );
+                        MP.setVisible(true);
+                        dispose();
+                        entro = true;
+                    }
+                }            
+            }
+
+            if( !entro ){
+                JOptionPane.showMessageDialog(this, "El id de cliente no corresponde a algun cliente disponible");
+            }
+            sistem.GuardarDatos();
         }
         else{
-            int idc = Integer.parseInt(sidc);
-
-            Iterator itr = sistem.getCliente().iterator();
-            while(itr.hasNext()){
-                Cliente clien = (Cliente) itr.next();
-                if( clien.getId() == idc  ){
-                    Double valor = Double.parseDouble( sv);
-
-                    int plazo = Integer.parseInt( sp);
-                    Double tasa = Double.parseDouble( st);
-                    Boolean reinversion = Boolean.parseBoolean( sr);
-
-                    sistem.CrearBonde(valor,idc,plazo,tasa,reinversion,id);
-                    sistem.GuardarDatos();
-
-                    MainPromotor MP = new MainPromotor(sistem, id );
-                    MP.setVisible(true);
-                    dispose();
-                    entro = true;
-                }
-            }            
+            JOptionPane.showMessageDialog(this, " El plazo solo puede ser multiplo 28 dias o de 365(1 años) o 1825(5años) ");
         }
-        
-        if( !entro ){
-            JOptionPane.showMessageDialog(this, "El id de cliente no corresponde a algun cliente disponible");
-        }
-        sistem.GuardarDatos();
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -228,11 +265,17 @@ public class CrearBonde extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -243,6 +286,5 @@ public class CrearBonde extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

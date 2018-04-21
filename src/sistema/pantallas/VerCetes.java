@@ -41,7 +41,7 @@ public class VerCetes extends javax.swing.JFrame {
         while(itr.hasNext()){
             Cete cet = (Cete) itr.next();
             //System.out.println(promo.getNombre() + "    " + promo.getContra() );
-            if( cet.getIdPromotor() == id && quies == 1 ){
+            if( quies == 3){
                 rowData[0] = cet.getId();
                 rowData[1] = cet.getIdCliente();
                 rowData[2] = cet.getValorNominal();
@@ -52,7 +52,18 @@ public class VerCetes extends javax.swing.JFrame {
                 rowData[7] = cet.getDiasTranscurridos();
                 model.addRow(rowData);
             }
-            if( cet.getIdCliente() == id && quies == 2 ){
+            else if( cet.getIdPromotor() == id && quies == 1 ){
+                rowData[0] = cet.getId();
+                rowData[1] = cet.getIdCliente();
+                rowData[2] = cet.getValorNominal();
+                rowData[3] = cet.getPlazo();
+                rowData[4] = cet.getTasaFija();
+                rowData[5] = cet.getDiaInicio();
+                rowData[6] = cet.isReinversion();
+                rowData[7] = cet.getDiasTranscurridos();
+                model.addRow(rowData);
+            }
+            else if( cet.getIdCliente() == id && quies == 2 ){
                 rowData[0] = cet.getId();
                 rowData[1] = cet.getIdCliente();
                 rowData[2] = cet.getValorNominal();
@@ -141,6 +152,11 @@ public class VerCetes extends javax.swing.JFrame {
         if (quies == 2){
             MainCliente MC = new MainCliente(sistem, id);
             MC.setVisible(true);
+            dispose();
+        }
+        if (quies == 3){
+            MainDirector MD = new MainDirector(sistem);
+            MD.setVisible(true);
             dispose();
         }
        

@@ -36,7 +36,7 @@ public class VerBondes extends javax.swing.JFrame {
         while(itr.hasNext()){
             BondeD bon = (BondeD) itr.next();
             //System.out.println(promo.getNombre() + "    " + promo.getContra() );
-            if( bon.getIdPromotor() == id && quies == 1 ){
+            if( quies == 3 ){
                 rowData[0] = bon.getId();
                 rowData[1] = bon.getIdCliente();
                 rowData[2] = bon.getValorNominal();
@@ -47,7 +47,18 @@ public class VerBondes extends javax.swing.JFrame {
                 rowData[7] = bon.getDiasTranscurridos();
                 model.addRow(rowData);
             }
-            if( bon.getIdCliente() == id && quies == 2 ){
+            else if( bon.getIdPromotor() == id && quies == 1 ){
+                rowData[0] = bon.getId();
+                rowData[1] = bon.getIdCliente();
+                rowData[2] = bon.getValorNominal();
+                rowData[3] = bon.getPlazo();
+                rowData[4] = bon.getTasaActual();
+                rowData[5] = bon.getDiaInicio();
+                rowData[6] = bon.isReinversion();
+                rowData[7] = bon.getDiasTranscurridos();
+                model.addRow(rowData);
+            }
+            else if( bon.getIdCliente() == id && quies == 2 ){
                 rowData[0] = bon.getId();
                 rowData[1] = bon.getIdCliente();
                 rowData[2] = bon.getValorNominal();
@@ -137,7 +148,12 @@ public class VerBondes extends javax.swing.JFrame {
             MainCliente MC = new MainCliente(sistem, id);
             MC.setVisible(true);
             dispose();
-        }        
+        }       
+        if (quies == 3){
+            MainDirector MD = new MainDirector(sistem);
+            MD.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
