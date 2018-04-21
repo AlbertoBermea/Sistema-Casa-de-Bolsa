@@ -14,8 +14,8 @@ import java.util.Calendar;
 public class BondeD extends Inversion {
     private double tasaActual;
 
-    public BondeD(int idCliente, int idPromotor, double valorNominal, int id, int plazo, int yearInicio, int diaInicio, int yearTermino, int diaTermino, int diasTranscurridos, boolean reinversion,double tasaActual, Sistema sistem) {
-        super(idCliente, idPromotor, valorNominal, id, plazo, yearInicio, diaInicio, yearTermino, diaTermino, diasTranscurridos, reinversion, sistem);
+    public BondeD(int idCliente, int idPromotor, double valorNominal, int id, int plazo,  int diaInicio,  int diasTranscurridos, boolean reinversion,double tasaActual, Sistema sistem) {
+        super(idCliente, idPromotor, valorNominal, id, plazo, diaInicio, diasTranscurridos, reinversion, sistem);
         this.tasaActual = tasaActual;
 
     }

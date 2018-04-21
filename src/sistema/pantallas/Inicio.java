@@ -19,6 +19,7 @@ public class Inicio extends javax.swing.JFrame {
 
     public boolean entrar = false;
     public Sistema sistem;
+    
     /**
      * Creates new form Inicio
      */
@@ -64,7 +65,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setText("jPass");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,8 +85,8 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(47, 47, 47)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPasswordField1)
-                    .addComponent(jTextField1))
+                    .addComponent(jTextField1)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -111,7 +112,7 @@ public class Inicio extends javax.swing.JFrame {
         
         String usuario = new String( jTextField1.getText());
         String pass = new String( jPasswordField1.getPassword());
-        System.out.println(usuario + "  " + pass);
+        //System.out.println(usuario + "  " + pass);
                 
         Iterator itr = sistem.getPromotor().iterator();
         while(itr.hasNext()){
@@ -129,7 +130,7 @@ public class Inicio extends javax.swing.JFrame {
         while(itr.hasNext()){
             Cliente clien = (Cliente) itr.next();
             if(usuario.equals(clien.getNombre()) && pass.equals(clien.getContra()) ){
-                MainCliente MC = new MainCliente(sistem);
+                MainCliente MC = new MainCliente(sistem, clien.getId());
                 MC.setVisible(true);
                 dispose();
                 entrar = true;

@@ -21,15 +21,12 @@ public class Inversion {
     private int id;
     private int plazo;
     private int diasTranscurridos;
-    private int yearInicio;
     private int diaInicio;
-    private int yearTermino;
-    private int diaTermino;
     private boolean reinversion; 
     private int idCliente;
     private int idPromotor;
     
-    public Inversion(int idCliente,int idPromotor,double valorNominal,int id, int plazo, int yearInicio,int diaInicio,int yearTermino,int diaTermino, int diasTranscurridos, boolean reinversion,Sistema sistem){
+    public Inversion(int idCliente,int idPromotor,double valorNominal,int id, int plazo,int diaInicio, int diasTranscurridos, boolean reinversion,Sistema sistem){
         this.idCliente = idCliente;
         this.idPromotor = idPromotor;
         this.valorNominal = valorNominal;
@@ -37,10 +34,7 @@ public class Inversion {
         this.plazo = plazo;
         this.sistem = sistem;
         this.diasTranscurridos = diasTranscurridos;
-        this.yearInicio = yearInicio;
         this. diaInicio = diaInicio;
-        this.yearTermino = yearTermino;
-        this.diaTermino = diaTermino;
         this.reinversion = reinversion;
     }
 
@@ -84,36 +78,12 @@ public class Inversion {
         this.diasTranscurridos = diasTranscurridos;
     }
 
-    public int getYearInicio() {
-        return yearInicio;
-    }
-
-    public void setYearInicio(int yearInicio) {
-        this.yearInicio = yearInicio;
-    }
-
     public int getDiaInicio() {
         return diaInicio;
     }
 
     public void setDiaInicio(int diaInicio) {
         this.diaInicio = diaInicio;
-    }
-
-    public int getYearTermino() {
-        return yearTermino;
-    }
-
-    public void setYearTermino(int yearTermino) {
-        this.yearTermino = yearTermino;
-    }
-
-    public int getDiaTermino() {
-        return diaTermino;
-    }
-
-    public void setDiaTermino(int diaTermino) {
-        this.diaTermino = diaTermino;
     }
 
 

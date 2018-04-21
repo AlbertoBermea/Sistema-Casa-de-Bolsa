@@ -21,6 +21,14 @@ public class Files {
         PrintWriter printWriter;
         try{
             printWriter = new PrintWriter(new FileWriter("data.txt"));
+            //contclientes
+            printWriter.println("" + sistem.getClientestotales());
+            //contpromotores
+            printWriter.println("" + sistem.getPromotorestotales());
+            //contCetes
+            printWriter.println("" + sistem.getCetestotales());
+            //contBondes
+            printWriter.println("" + sistem.getBondestotales());
             
             //datos director
             printWriter.println("" + sistem.getDirector().getNombre() + "," + sistem.getDirector().getContra() + "," + sistem.getDirector().getId() + ""  );
@@ -28,25 +36,25 @@ public class Files {
             //datos promotores
             printWriter.println("" + sistem.getPromotor().size());
             for(Promotor promo : sistem.getPromotor() ){
-                printWriter.println("" + promo.getNombre() + "," + promo.getContra() + "," + promo.getId() + "");
+                printWriter.println("" + promo.getNombre() + "," + promo.getContra() + "," + promo.getId() + "," + promo.getTotalComisiones() +  "");
             }
             
             //datos clientes
             printWriter.println("" + sistem.getCliente().size());
             for(Cliente clien : sistem.getCliente()){
-                printWriter.println("" + clien.getNombre() + "," + clien.getContra() + "," + clien.getId() + "");
+                printWriter.println("" + clien.getNombre() + "," + clien.getContra() + "," + clien.getId() + "," + clien.getBalance() + "");
             }
             
             //datos inversiones cetes
             printWriter.println("" + sistem.getCetes().size() );
             for(Cete cet : sistem.getCetes()){
-                printWriter.println("" + cet.getIdCliente() + "," + cet.getIdPromotor()+ "," + cet.getId() + "," + cet.getPlazo() + "," + cet.getValorNominal() + "," + cet.getTasaFija() + "," + cet.getDiaInicio() + "," + cet.getYearInicio() +"," + cet.getDiaTermino()+"," + cet.getYearTermino() + "," + cet.getDiasTranscurridos() + "," + cet.isReinversion() + "");
+                printWriter.println("" + cet.getIdCliente() + "," + cet.getIdPromotor()+ "," + cet.getId() + "," + cet.getPlazo() + "," + cet.getValorNominal() + "," + cet.getTasaFija() + "," + cet.getDiaInicio() + "," + cet.getDiasTranscurridos() + "," + cet.isReinversion() + "");
             }
             
             //datos inversiones bondesd
             printWriter.println("" + sistem.getBondes().size() );
             for(BondeD bon : sistem.getBondes()){
-                printWriter.println("" + bon.getIdCliente() + "," + bon.getIdPromotor()+ "," + bon.getId() + "," + bon.getPlazo() + "," + bon.getValorNominal() + "," + bon.getTasaActual() + "," + bon.getDiaInicio() + "," + bon.getYearInicio() +"," + bon.getDiaTermino()+"," + bon.getYearTermino() + "," + bon.getDiasTranscurridos() + "," + bon.isReinversion() + "");
+                printWriter.println("" + bon.getIdCliente() + "," + bon.getIdPromotor()+ "," + bon.getId() + "," + bon.getPlazo() + "," + bon.getValorNominal() + "," + bon.getTasaActual() + "," + bon.getDiaInicio() + "," + bon.getDiasTranscurridos() + "," + bon.isReinversion() + "");
             }
             
             
@@ -60,6 +68,11 @@ public class Files {
         BufferedReader bufferedReader;
         try {
             bufferedReader = new BufferedReader(new FileReader("data.txt"));
+            
+            sistem.setPromotorestotales(Integer.parseInt( bufferedReader.readLine()));
+            sistem.setClientestotales(Integer.parseInt( bufferedReader.readLine()));
+            sistem.setCetestotales(Integer.parseInt( bufferedReader.readLine()));
+            sistem.setBondestotales(Integer.parseInt( bufferedReader.readLine()));
             
             //get the first line
             String line = bufferedReader.readLine();
@@ -85,8 +98,9 @@ public class Files {
                 String nom = tokens[0];
                 String contra = tokens[1];
                 int id = Integer.parseInt(tokens[2]);
+                double comi = Double.parseDouble(tokens[3]);
                 
-                Promotor promo = new Promotor(nom,id,contra,sistem);
+                Promotor promo = new Promotor(nom,id,contra,comi,sistem);
                 sistem.getPromotor().add(promo);
             }
             
@@ -104,8 +118,9 @@ public class Files {
                 String nom = tokens[0];
                 String contra = tokens[1];
                 int id = Integer.parseInt(tokens[2]);
+                double bal = Double.parseDouble(tokens[3]);
                 
-                Cliente clien = new Cliente(nom,id,contra,sistem);
+                Cliente clien = new Cliente(nom,id,contra,bal,sistem);
                 sistem.getCliente().add(clien);
             }
             
@@ -123,16 +138,13 @@ public class Files {
                 int idp = Integer.parseInt(tokens[1]);
                 int id = Integer.parseInt(tokens[2]);
                 int plazo = Integer.parseInt(tokens[3]);
-                double valor = Double.parseDouble(tokens[4]) ;
+                double valor = Double.parseDouble(tokens[4]);
                 double tasa = Double.parseDouble(tokens[5]);
                 int diaInicio = Integer.parseInt(tokens[6]);
-                int yearInicio = Integer.parseInt(tokens[7]);
-                int diaTermino = Integer.parseInt(tokens[8]);
-                int yearTermino = Integer.parseInt(tokens[9]);
-                int diasTranscurridos = Integer.parseInt(tokens[10]);
-                boolean reinversion = Boolean.parseBoolean(tokens[11]);
+                int diasTranscurridos = Integer.parseInt(tokens[7]);
+                boolean reinversion = Boolean.parseBoolean(tokens[8]);
                       
-                Cete cet = new Cete(idc,idp,valor, id, plazo, yearInicio, diaInicio, yearTermino, diaTermino, diasTranscurridos, reinversion,tasa,sistem);
+                Cete cet = new Cete(idc,idp,valor, id, plazo,  diaInicio,  diasTranscurridos, reinversion,tasa,sistem);
                 sistem.getCetes().add(cet);
             }
             
@@ -153,13 +165,10 @@ public class Files {
                 double valor = Double.parseDouble(tokens[4]) ;
                 double tasa = Double.parseDouble(tokens[5]);
                 int diaInicio = Integer.parseInt(tokens[6]);
-                int yearInicio = Integer.parseInt(tokens[7]);
-                int diaTermino = Integer.parseInt(tokens[8]);
-                int yearTermino = Integer.parseInt(tokens[9]);
-                int diasTranscurridos = Integer.parseInt(tokens[10]);
-                boolean reinversion = Boolean.parseBoolean(tokens[11]);
+                int diasTranscurridos = Integer.parseInt(tokens[7]);
+                boolean reinversion = Boolean.parseBoolean(tokens[8]);
                       
-                BondeD bon = new BondeD(idc,idp,valor, id, plazo, yearInicio, diaInicio, yearTermino, diaTermino, diasTranscurridos, reinversion,tasa,sistem);
+                BondeD bon = new BondeD(idc,idp,valor, id, plazo,  diaInicio,  diasTranscurridos, reinversion,tasa,sistem);
                 sistem.getBondes().add(bon);
             }
             

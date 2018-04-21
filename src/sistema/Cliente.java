@@ -13,12 +13,27 @@ import java.util.ArrayList;
  */
 public class Cliente extends Persona {
     private Sistema sistem;
-    private Double Dinero;
-    private ArrayList<Integer> idInversiones;
+    private Double balance;
     
-    public Cliente(String nombre, int id, String contra, Sistema sistem) {
+    public Cliente(String nombre, int id, String contra, Double balance, Sistema sistem) {
         super(nombre, id, contra);
         this.sistem = sistem;
+        this.balance = balance;
     }
-    
+
+    public Sistema getSistem() {
+        return sistem;
+    }
+
+    public void setSistem(Sistema sistem) {
+        this.sistem = sistem;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }    
 }

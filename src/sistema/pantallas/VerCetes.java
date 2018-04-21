@@ -17,44 +17,53 @@ import sistema.Sistema;
  *
  * @author ALBER
  */
-public class Cetes extends javax.swing.JFrame {
+public class VerCetes extends javax.swing.JFrame {
     public Sistema sistem;
     private int id;
+    private int quies;
     
     /**
      * Creates new form Cetes
      */
-    public Cetes(Sistema sistem, int id) {
-        JPanel main = new JPanel();
-        JLabel notifyline1 = new JLabel();
-        notifyline1.setText("test");
-        main.add(notifyline1);
-        this.add(main);
-        
+    public VerCetes(Sistema sistem, int id, int quies) {        
         initComponents();
         this.sistem = sistem;
         this.id = id;
+        this.quies = quies;
         Despliega();
         
     }
     
     public void Despliega(){
-        int y = 50;
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        Object rowData[] = new Object[4];
+        Object rowData[] = new Object[9];
         Iterator itr = sistem.getCetes().iterator();
         while(itr.hasNext()){
             Cete cet = (Cete) itr.next();
             //System.out.println(promo.getNombre() + "    " + promo.getContra() );
-            if( cet.getId() == id ){
+            if( cet.getIdPromotor() == id && quies == 1 ){
                 rowData[0] = cet.getId();
                 rowData[1] = cet.getIdCliente();
-                rowData[2] = cet.getPlazo();
-                rowData[3] = cet.getTasaFija();
+                rowData[2] = cet.getValorNominal();
+                rowData[3] = cet.getPlazo();
+                rowData[4] = cet.getTasaFija();
+                rowData[5] = cet.getDiaInicio();
+                rowData[6] = cet.isReinversion();
+                rowData[7] = cet.getDiasTranscurridos();
+                model.addRow(rowData);
+            }
+            if( cet.getIdCliente() == id && quies == 2 ){
+                rowData[0] = cet.getId();
+                rowData[1] = cet.getIdCliente();
+                rowData[2] = cet.getValorNominal();
+                rowData[3] = cet.getPlazo();
+                rowData[4] = cet.getTasaFija();
+                rowData[5] = cet.getDiaInicio();
+                rowData[6] = cet.isReinversion();
+                rowData[7] = cet.getDiasTranscurridos();
                 model.addRow(rowData);
             }
         }
-        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,6 +77,7 @@ public class Cetes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,38 +90,65 @@ public class Cetes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "IdInversion", "IdCliente", "Plazo", "Tasa"
+                "IdInversion", "IdCliente", "Valor", "Plazo", "Tasa", "Dia Inicio", "Reinversion", "Dias Transcurridos"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
+
+        jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(242, 242, 242)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 125, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(322, 322, 322)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if ( quies == 1 ){
+            MainPromotor MP = new MainPromotor(sistem , id );
+            MP.setVisible(true);
+            dispose();
+        }
+        if (quies == 2){
+            MainCliente MC = new MainCliente(sistem, id);
+            MC.setVisible(true);
+            dispose();
+        }
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

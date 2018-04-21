@@ -3,24 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/Cliente.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/VerBondes.java</file>
             <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/Inversion.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/VerClientes.java</file>
             <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/Start.java</file>
             <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/BondeD.java</file>
             <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/MainDirector.java</file>
             <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/Sistema.java</file>
             <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/Cete.java</file>
-            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/MainPromotor.java</file>
-            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/SpreadSheet.java</file>
-            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/Promotor.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/CrearCete.java</file>
             <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/CreacionCliente.java</file>
-            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/Files.java</file>
-            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/CreacionPromotor.java</file>
             <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/Persona.java</file>
             <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/Director.java</file>
-            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/Cetes.java</file>
-            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/Inicio.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/VerCetes.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/CrearPromotor.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/EliminarCliente.java</file>
             <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/MainCliente.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/Cliente.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/MainPromotor.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/SpreadSheet.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/VerPromotores.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/Promotor.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/Files.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/EliminarPromotor.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/Inicio.java</file>
+            <file>file:/C:/Users/ALBER/Documents/NetBeansProjects/Sistema/src/sistema/pantallas/CrearBonde.java</file>
         </group>
     </open-files>
 </project-private>

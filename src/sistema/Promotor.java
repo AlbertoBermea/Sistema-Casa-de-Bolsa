@@ -13,11 +13,37 @@ import java.util.ArrayList;
  */
 public class Promotor extends Persona {
     private Sistema sistem;
+    private double TotalComisiones;
     private ArrayList<Integer> idInversiones;
     
-    public Promotor(String nombre, int id, String contra,Sistema sistem) {
+    public Promotor(String nombre, int id, String contra,double TotalComisiones,Sistema sistem) {
         super(nombre, id, contra);
         this.sistem = sistem;
+        this.TotalComisiones = TotalComisiones;
+    }
+
+    public Sistema getSistem() {
+        return sistem;
+    }
+
+    public void setSistem(Sistema sistem) {
+        this.sistem = sistem;
+    }
+
+    public double getTotalComisiones() {
+        return TotalComisiones;
+    }
+
+    public void setTotalComisiones(double TotalComisiones) {
+        this.TotalComisiones = TotalComisiones;
+    }
+
+    public ArrayList<Integer> getIdInversiones() {
+        return idInversiones;
+    }
+
+    public void setIdInversiones(ArrayList<Integer> idInversiones) {
+        this.idInversiones = idInversiones;
     }
     
 }
