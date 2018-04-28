@@ -210,7 +210,7 @@ public class CrearBonde extends javax.swing.JFrame {
         
         int plazo = Integer.parseInt(sp);
         
-        if( plazo % 28 == 0 ){
+        if( plazo % 28 == 0 || plazo == 365 || plazo == 1825 ){
             if((jCheckBox1.isSelected() && jCheckBox2.isSelected()) ||(!jCheckBox1.isSelected() && !jCheckBox2.isSelected())  ){
                 JOptionPane.showMessageDialog(this, "Selecccionar un campo de reinversion");
             }

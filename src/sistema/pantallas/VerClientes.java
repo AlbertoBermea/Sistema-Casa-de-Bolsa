@@ -182,7 +182,9 @@ public class VerClientes extends javax.swing.JFrame {
             dispose();
         }
         if( dondevengo == 5){
-            
+            MainDirector md = new MainDirector(sistem);
+            md.setVisible(true);
+            dispose();
         }
         
         
