@@ -36,7 +36,7 @@ public class VerCetes extends javax.swing.JFrame {
     
     public void Despliega(){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        Object rowData[] = new Object[9];
+        Object rowData[] = new Object[7];
         Iterator itr = sistem.getCetes().iterator();
         while(itr.hasNext()){
             Cete cet = (Cete) itr.next();
@@ -47,9 +47,8 @@ public class VerCetes extends javax.swing.JFrame {
                 rowData[2] = cet.getValorNominal();
                 rowData[3] = cet.getPlazo();
                 rowData[4] = cet.getTasaFija();
-                rowData[5] = cet.getDiaInicio();
-                rowData[6] = cet.isReinversion();
-                rowData[7] = cet.getDiasTranscurridos();
+                rowData[5] = cet.isReinversion();
+                rowData[6] = cet.getDiasTranscurridos();
                 model.addRow(rowData);
             }
             else if( cet.getIdPromotor() == id && quies == 1 ){
@@ -58,9 +57,8 @@ public class VerCetes extends javax.swing.JFrame {
                 rowData[2] = cet.getValorNominal();
                 rowData[3] = cet.getPlazo();
                 rowData[4] = cet.getTasaFija();
-                rowData[5] = cet.getDiaInicio();
-                rowData[6] = cet.isReinversion();
-                rowData[7] = cet.getDiasTranscurridos();
+                rowData[5] = cet.isReinversion();
+                rowData[6] = cet.getDiasTranscurridos();
                 model.addRow(rowData);
             }
             else if( cet.getIdCliente() == id && quies == 2 ){
@@ -69,9 +67,8 @@ public class VerCetes extends javax.swing.JFrame {
                 rowData[2] = cet.getValorNominal();
                 rowData[3] = cet.getPlazo();
                 rowData[4] = cet.getTasaFija();
-                rowData[5] = cet.getDiaInicio();
-                rowData[6] = cet.isReinversion();
-                rowData[7] = cet.getDiasTranscurridos();
+                rowData[5] = cet.isReinversion();
+                rowData[6] = cet.getDiasTranscurridos();
                 model.addRow(rowData);
             }
         }
@@ -101,7 +98,7 @@ public class VerCetes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "IdInversion", "IdCliente", "Valor", "Plazo", "Tasa", "Dia Inicio", "Reinversion", "Dias Transcurridos"
+                "IdInversion", "IdCliente", "Valor", "Plazo", "Tasa", "Reinversion", "Dias Transcurridos"
             }
         ));
         jScrollPane2.setViewportView(jTable1);

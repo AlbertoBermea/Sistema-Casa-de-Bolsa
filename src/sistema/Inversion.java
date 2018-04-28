@@ -21,12 +21,13 @@ public class Inversion {
     private int id;
     private int plazo;
     private int diasTranscurridos;
-    private int diaInicio;
     private boolean reinversion; 
     private int idCliente;
     private int idPromotor;
+    private double comisionPromotor;
+    private double comisionCasa;
     
-    public Inversion(int idCliente,int idPromotor,double valorNominal,int id, int plazo,int diaInicio, int diasTranscurridos, boolean reinversion,Sistema sistem){
+    public Inversion(int idCliente,int idPromotor,double valorNominal,int id, int plazo, int diasTranscurridos, boolean reinversion,Sistema sistem){
         this.idCliente = idCliente;
         this.idPromotor = idPromotor;
         this.valorNominal = valorNominal;
@@ -34,8 +35,20 @@ public class Inversion {
         this.plazo = plazo;
         this.sistem = sistem;
         this.diasTranscurridos = diasTranscurridos;
-        this. diaInicio = diaInicio;
         this.reinversion = reinversion;
+    }
+    
+    public Inversion(int idCliente,int idPromotor,double valorNominal,int id, int plazo, int diasTranscurridos, boolean reinversion,double comisionPromotor, double comisionCasa,Sistema sistem){
+        this.idCliente = idCliente;
+        this.idPromotor = idPromotor;
+        this.valorNominal = valorNominal;
+        this.id = id;
+        this.plazo = plazo;
+        this.sistem = sistem;
+        this.diasTranscurridos = diasTranscurridos;
+        this.reinversion = reinversion;
+        this.comisionCasa = comisionCasa;
+        this.comisionPromotor = comisionPromotor;
     }
 
     public Sistema getSistem() {
@@ -78,15 +91,6 @@ public class Inversion {
         this.diasTranscurridos = diasTranscurridos;
     }
 
-    public int getDiaInicio() {
-        return diaInicio;
-    }
-
-    public void setDiaInicio(int diaInicio) {
-        this.diaInicio = diaInicio;
-    }
-
-
     public boolean isReinversion() {
         return reinversion;
     }
@@ -110,6 +114,23 @@ public class Inversion {
     public void setIdPromotor(int idPromotor) {
         this.idPromotor = idPromotor;
     }
+
+    public double getComisionPromotor() {
+        return comisionPromotor;
+    }
+
+    public void setComisionPromotor(double comisionPromotor) {
+        this.comisionPromotor = comisionPromotor;
+    }
+
+    public double getComisionCasa() {
+        return comisionCasa;
+    }
+
+    public void setComisionCasa(double comisionCasa) {
+        this.comisionCasa = comisionCasa;
+    }
+    
     
     
 }

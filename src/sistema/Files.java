@@ -48,15 +48,26 @@ public class Files {
             //datos inversiones cetes
             printWriter.println("" + sistem.getCetes().size() );
             for(Cete cet : sistem.getCetes()){
-                printWriter.println("" + cet.getIdCliente() + "," + cet.getIdPromotor()+ "," + cet.getId() + "," + cet.getPlazo() + "," + cet.getValorNominal() + "," + cet.getTasaFija() + "," + cet.getDiaInicio() + "," + cet.getDiasTranscurridos() + "," + cet.isReinversion() + "");
+                printWriter.println("" + cet.getIdCliente() + "," + cet.getIdPromotor()+ "," + cet.getId() + "," + cet.getPlazo() + "," + cet.getValorNominal() + "," + cet.getTasaFija() + ","  + cet.getDiasTranscurridos() + "," + cet.isReinversion() + "");
             }
             
             //datos inversiones bondesd
             printWriter.println("" + sistem.getBondes().size() );
             for(BondeD bon : sistem.getBondes()){
-                printWriter.println("" + bon.getIdCliente() + "," + bon.getIdPromotor()+ "," + bon.getId() + "," + bon.getPlazo() + "," + bon.getValorNominal() + "," + bon.getTasaActual() + "," + bon.getDiaInicio() + "," + bon.getDiasTranscurridos() + "," + bon.isReinversion() + "");
+                printWriter.println("" + bon.getIdCliente() + "," + bon.getIdPromotor()+ "," + bon.getId() + "," + bon.getPlazo() + "," + bon.getValorNominal() + "," + bon.getTasaActual() + "," + bon.getDiasTranscurridos() + "," + bon.isReinversion() + "");
             }
             
+            //datos historial cetes
+            printWriter.println("" + sistem.getHistorialCetes().size() );
+            for(Cete cet : sistem.getHistorialCetes()){
+                printWriter.println("" + cet.getIdCliente() + "," + cet.getIdPromotor()+ "," + cet.getId() + "," + cet.getPlazo() + "," + cet.getValorNominal() + "," + cet.getTasaFija() + ","  + cet.getDiasTranscurridos() + "," + cet.isReinversion() + "," + cet.getComisionPromotor() + "," + cet.getComisionCasa() + "");
+            }
+           
+            //datos historial bondesd
+            printWriter.println("" + sistem.getHistorialBondes().size() );
+            for(BondeD bon : sistem.getHistorialBondes()){
+                printWriter.println("" + bon.getIdCliente() + "," + bon.getIdPromotor()+ "," + bon.getId() + "," + bon.getPlazo() + "," + bon.getValorNominal() + "," + bon.getTasaActual() + "," + bon.getDiasTranscurridos() + "," + bon.isReinversion() + "," + bon.getComisionPromotor() + "," + bon.getComisionCasa() + "");
+            }
             
             
             printWriter.close();
@@ -140,11 +151,10 @@ public class Files {
                 int plazo = Integer.parseInt(tokens[3]);
                 double valor = Double.parseDouble(tokens[4]);
                 double tasa = Double.parseDouble(tokens[5]);
-                int diaInicio = Integer.parseInt(tokens[6]);
-                int diasTranscurridos = Integer.parseInt(tokens[7]);
-                boolean reinversion = Boolean.parseBoolean(tokens[8]);
+                int diasTranscurridos = Integer.parseInt(tokens[6]);
+                boolean reinversion = Boolean.parseBoolean(tokens[7]);
                       
-                Cete cet = new Cete(idc,idp,valor, id, plazo,  diaInicio,  diasTranscurridos, reinversion,tasa,sistem);
+                Cete cet = new Cete(idc,idp,valor, id, plazo, diasTranscurridos, reinversion,tasa,sistem);
                 sistem.getCetes().add(cet);
             }
             
@@ -164,14 +174,64 @@ public class Files {
                 int plazo = Integer.parseInt(tokens[3]);
                 double valor = Double.parseDouble(tokens[4]) ;
                 double tasa = Double.parseDouble(tokens[5]);
-                int diaInicio = Integer.parseInt(tokens[6]);
-                int diasTranscurridos = Integer.parseInt(tokens[7]);
-                boolean reinversion = Boolean.parseBoolean(tokens[8]);
+                int diasTranscurridos = Integer.parseInt(tokens[6]);
+                boolean reinversion = Boolean.parseBoolean(tokens[7]);
                       
-                BondeD bon = new BondeD(idc,idp,valor, id, plazo,  diaInicio,  diasTranscurridos, reinversion,tasa,sistem);
+                BondeD bon = new BondeD(idc,idp,valor, id, plazo, diasTranscurridos, reinversion,tasa,sistem);
                 sistem.getBondes().add(bon);
             }
             
+            //historial cetes
+            int histcetes = Integer.parseInt(bufferedReader.readLine());
+            sistem.getHistorialCetes().clear();
+            //adding cetes
+            for (int i = 0; i < histcetes; i++){
+                //getting the next line
+                line = bufferedReader.readLine();
+                //getting every token from the line
+                tokens = line.split(",");
+                //Defining score and lives
+                int idc = Integer.parseInt(tokens[0]);
+                int idp = Integer.parseInt(tokens[1]);
+                int id = Integer.parseInt(tokens[2]);
+                int plazo = Integer.parseInt(tokens[3]);
+                double valor = Double.parseDouble(tokens[4]);
+                double tasa = Double.parseDouble(tokens[5]);
+                int diasTranscurridos = Integer.parseInt(tokens[6]);
+                boolean reinversion = Boolean.parseBoolean(tokens[7]);
+                double com1 = Double.parseDouble(tokens[8]);
+                double com2 = Double.parseDouble(tokens[9]);
+                
+                      
+                Cete cet = new Cete(idc,idp,valor, id, plazo, diasTranscurridos, reinversion,tasa,com1,com2,sistem);
+                sistem.getHistorialCetes().add(cet);
+            }
+            
+            //historial bondes
+            int histbondes = Integer.parseInt(bufferedReader.readLine());
+            sistem.getHistorialBondes().clear();
+            //adding bondes
+            for (int i = 0; i < histbondes; i++){
+                //getting the next line
+                line = bufferedReader.readLine();
+                //getting every token from the line
+                tokens = line.split(",");
+                //Defining score and lives
+                int idc = Integer.parseInt(tokens[0]);
+                int idp = Integer.parseInt(tokens[1]);
+                int id = Integer.parseInt(tokens[2]);
+                int plazo = Integer.parseInt(tokens[3]);
+                double valor = Double.parseDouble(tokens[4]) ;
+                double tasa = Double.parseDouble(tokens[5]);
+                int diasTranscurridos = Integer.parseInt(tokens[6]);
+                boolean reinversion = Boolean.parseBoolean(tokens[7]);
+                double com1 = Double.parseDouble(tokens[8]);
+                double com2 = Double.parseDouble(tokens[9]);
+
+                      
+                BondeD bon = new BondeD(idc,idp,valor, id, plazo, diasTranscurridos, reinversion,tasa,com1,com2,sistem);
+                sistem.getHistorialBondes().add(bon);
+            }
             
         } catch (IOException ioe) {
             System.out.println("Juego no ha sido guardado " + ioe.toString());

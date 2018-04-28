@@ -14,14 +14,15 @@ import java.util.Calendar;
 public class Cete extends Inversion{
     private double tasaFija;
 
-    public Cete(int idCliente, int idPromotor, double valorNominal, int id, int plazo,int diaInicio, int diasTranscurridos, boolean reinversion,double tasaFija, Sistema sistem) {
-        super(idCliente, idPromotor, valorNominal, id, plazo, diaInicio, diasTranscurridos, reinversion, sistem);
+    public Cete(int idCliente, int idPromotor, double valorNominal, int id, int plazo, int diasTranscurridos, boolean reinversion,double tasaFija, Sistema sistem) {
+        super(idCliente, idPromotor, valorNominal, id, plazo,  diasTranscurridos, reinversion, sistem);
         this.tasaFija = tasaFija;
     }
-
-   
-
     
+    public Cete(int idCliente, int idPromotor, double valorNominal, int id, int plazo, int diasTranscurridos, boolean reinversion,double tasaFija, double comisionPromotor,double comisionCasa, Sistema sistem) {
+        super(idCliente, idPromotor, valorNominal, id, plazo,  diasTranscurridos, reinversion,comisionPromotor,comisionCasa, sistem);
+        this.tasaFija = tasaFija;
+    }
 
     public double getTasaFija() {
         return tasaFija;

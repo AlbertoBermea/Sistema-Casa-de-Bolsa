@@ -31,7 +31,7 @@ public class VerBondes extends javax.swing.JFrame {
 
     public void Despliega(){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        Object rowData[] = new Object[9];
+        Object rowData[] = new Object[7];
         Iterator itr = sistem.getBondes().iterator();
         while(itr.hasNext()){
             BondeD bon = (BondeD) itr.next();
@@ -42,9 +42,8 @@ public class VerBondes extends javax.swing.JFrame {
                 rowData[2] = bon.getValorNominal();
                 rowData[3] = bon.getPlazo();
                 rowData[4] = bon.getTasaActual();
-                rowData[5] = bon.getDiaInicio();
-                rowData[6] = bon.isReinversion();
-                rowData[7] = bon.getDiasTranscurridos();
+                rowData[5] = bon.isReinversion();
+                rowData[6] = bon.getDiasTranscurridos();
                 model.addRow(rowData);
             }
             else if( bon.getIdPromotor() == id && quies == 1 ){
@@ -53,9 +52,8 @@ public class VerBondes extends javax.swing.JFrame {
                 rowData[2] = bon.getValorNominal();
                 rowData[3] = bon.getPlazo();
                 rowData[4] = bon.getTasaActual();
-                rowData[5] = bon.getDiaInicio();
-                rowData[6] = bon.isReinversion();
-                rowData[7] = bon.getDiasTranscurridos();
+                rowData[5] = bon.isReinversion();
+                rowData[6] = bon.getDiasTranscurridos();
                 model.addRow(rowData);
             }
             else if( bon.getIdCliente() == id && quies == 2 ){
@@ -64,9 +62,8 @@ public class VerBondes extends javax.swing.JFrame {
                 rowData[2] = bon.getValorNominal();
                 rowData[3] = bon.getPlazo();
                 rowData[4] = bon.getTasaActual();
-                rowData[5] = bon.getDiaInicio();
-                rowData[6] = bon.isReinversion();
-                rowData[7] = bon.getDiasTranscurridos();
+                rowData[5] = bon.isReinversion();
+                rowData[6] = bon.getDiasTranscurridos();
                 model.addRow(rowData);
             }
         }
@@ -92,7 +89,7 @@ public class VerBondes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "IdInversion", "IdCliente", "Valor", "Plazo", "Tasa", "Dia Inicio", "Reinversion", "Dias Transcurridos"
+                "IdInversion", "IdCliente", "Valor", "Plazo", "Tasa", "Reinversion", "Dias Transcurridos"
             }
         ));
         jScrollPane2.setViewportView(jTable1);

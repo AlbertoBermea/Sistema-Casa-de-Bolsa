@@ -26,6 +26,8 @@ public class Sistema {
     private int promotorestotales = 0;
     private int cetestotales = 0;
     private int bondestotales = 0;
+    private ArrayList<Cete> historialCetes;
+    private ArrayList<BondeD> historialBondes;
     
     public Sistema(){
         init();
@@ -37,20 +39,10 @@ public class Sistema {
         cetes = new ArrayList<>();
         bondes = new ArrayList<>();     
         director = new Director("",0,"",this);
-        
-       // for(int i = 0 ; i < 10;i++){
-         //   System.out.println(ThreadLocalRandom.current().nextDouble(1.00, 1.009));
-        //}
-       
+        historialCetes = new ArrayList<>();
+        historialBondes = new ArrayList<>();
         
         Files.loadFile(this);
-        
-        Iterator itr = cetes.iterator();
-        while(itr.hasNext()){
-            Cete cet = (Cete) itr.next();
-            
-            //System.out.println(cet.getTasaFija());
-        }
     }
 
     public ArrayList<Cliente> getCliente() {
@@ -137,16 +129,47 @@ public class Sistema {
     public void setBondestotales(int bondestotales) {
         this.bondestotales = bondestotales;
     }
+
+    public double getDineroBanco() {
+        return dineroBanco;
+    }
+
+    public void setDineroBanco(double dineroBanco) {
+        this.dineroBanco = dineroBanco;
+    }
+
+    public ArrayList<Cete> getHistorialCetes() {
+        return historialCetes;
+    }
+
+    public void setHistorialCetes(ArrayList<Cete> historialCetes) {
+        this.historialCetes = historialCetes;
+    }
+
+    public ArrayList<BondeD> getHistorialBondes() {
+        return historialBondes;
+    }
+
+    public void setHistorialBondes(ArrayList<BondeD> historialBondes) {
+        this.historialBondes = historialBondes;
+    }
     
     public void CrearCete(double valor,int idc,int plazo, double tasa, boolean reinversion, int idp){
-        System.out.println(plazo);
         cetestotales++;
-        cetes.add( new Cete(idc,idp,valor, cetestotales, plazo,diaActual,  0, reinversion, tasa ,this ) );
+        cetes.add( new Cete(idc,idp,valor, cetestotales, plazo,  0, reinversion, tasa ,this ) );
     }
     
     public void CrearBonde(double valor,int idc,int plazo, double tasa, boolean reinversion, int idp){
         bondestotales++;
-        bondes.add( new BondeD(idc,idp,valor, bondestotales, plazo,diaActual,  0, reinversion, tasa ,this ) );
+        bondes.add( new BondeD(idc,idp,valor, cetestotales, plazo,  0, reinversion, tasa ,this ) );
+    }
+    
+    public void CrearHistorialCete(double valor,int idc,int plazo, double tasa, boolean reinversion, int idp, int id,double com1,double com2){
+        historialCetes.add( new Cete(idc,idp,valor, id, plazo,  0, reinversion, tasa,com1,com2 ,this ) );
+    }
+    
+    public void CrearHistorialBonde(double valor,int idc,int plazo, double tasa, boolean reinversion, int idp, int id,double com1,double com2){
+        historialBondes.add( new BondeD(idc,idp,valor, id, plazo, 0, reinversion, tasa ,com1,com2,this ) );
     }
     
     public void eliminarCliente(int id){
@@ -170,22 +193,29 @@ public class Sistema {
             }
         }
     }
+    
     public void CambioDias(int dias){
         CambioDiasCetes(dias);
         CambioDiasBondes(dias);
+        CambioDiasHistorial(dias);
     }
+    
     public void CambioDiasCetes(int dias){
         Iterator itr = cetes.iterator();
         while(itr.hasNext()){
             Cete cet = (Cete) itr.next();
             cet.setDiasTranscurridos(cet.getDiasTranscurridos() + dias);
+        }
+        
+        itr = cetes.iterator();
+        while(itr.hasNext()){
+            Cete cet = (Cete) itr.next();
             if(cet.getDiasTranscurridos() > cet.getPlazo()){
                 double temp = cet.getValorNominal() * cet.getTasaFija();
                 double temp2 = temp - cet.getValorNominal();
                 double comision = temp2 * .05;
                 //System.out.println(temp + "     " + temp2 + "       " + comision);
                 dineroBanco = dineroBanco + comision;
-                //
                 Iterator itr2 = promotor.iterator();
                 while(itr2.hasNext()){
                     Promotor pro = (Promotor) itr2.next();
@@ -205,22 +235,35 @@ public class Sistema {
                         }
                     }
                 }
+                CrearHistorialCete( cet.getValorNominal() ,cet.getIdCliente(), cet.getPlazo() ,cet.getTasaFija() ,cet.isReinversion(),cet.getIdPromotor(), cet.getId(),comision,comision );
+                
                 cetes.remove(cet);     
                 itr = cetes.iterator();
             }
         }
     }
+    
     public void CambioDiasBondes(int dias){
-        for (int i = 0 ; i < dias ; i++){
+        for (int i = 0 ; i < dias ; i++ ){
             Iterator itr = bondes.iterator();
             while(itr.hasNext()){
                 BondeD bon = (BondeD) itr.next();
-                bon.setDiasTranscurridos(bon.getDiasTranscurridos() + 1);
+                if(bon.getDiasTranscurridos() < bon.getPlazo() ){
+                    bon.setDiasTranscurridos(bon.getDiasTranscurridos() + 1);
+                }                
+            }
+        }          
+        
+        for (int i = 0 ; i < dias ; i++ ){
+            Iterator itr = bondes.iterator();
+            while(itr.hasNext()){
+                BondeD bon = (BondeD) itr.next();
                 if(bon.getDiasTranscurridos() > bon.getPlazo()){
                     double temp = bon.getValorNominal() * bon.getTasaActual();
                     double temp2 = temp - bon.getValorNominal();
                     double comision = temp2 * .05;
                     dineroBanco = dineroBanco + comision;
+                    
                     //
                     Iterator itr2 = promotor.iterator();
                     while(itr2.hasNext()){
@@ -241,8 +284,9 @@ public class Sistema {
                                 cli.setBalance( cli.getBalance() + temp - (comision * 2) );
                             }
                         }
-                    }
-                    
+                    }            
+                    CrearHistorialBonde( bon.getValorNominal() ,bon.getIdCliente(),  bon.getPlazo()  ,bon.getTasaActual() ,bon.isReinversion(),bon.getIdPromotor(),bon.getId(),comision,comision);
+
                     bondes.remove(bon);     
                     itr = bondes.iterator();
                 }
@@ -251,6 +295,18 @@ public class Sistema {
                     bon.setTasaActual(ThreadLocalRandom.current().nextDouble(1.00, 1.009));
                 }
             }
+        }
+    }
+    public void CambioDiasHistorial(int dias){
+        Iterator itr = historialBondes.iterator();
+        while(itr.hasNext()){
+            BondeD bon = (BondeD) itr.next();
+            bon.setDiasTranscurridos(bon.getDiasTranscurridos() + dias);
+        }
+        itr = historialCetes.iterator();
+        while(itr.hasNext()){
+            Cete cet = (Cete) itr.next();
+            cet.setDiasTranscurridos(cet.getDiasTranscurridos() + dias);
         }
     }
 }
